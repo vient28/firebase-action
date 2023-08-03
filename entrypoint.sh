@@ -42,6 +42,7 @@ fi
 sh -c "ls -ltrha"
 sh -c "cat .env"
 sh -c "pwd"
+sh -c "chmod -R 777 /github/home/.config/" 
 sh -c "firebase $*"
 
 # response=$(firebase $*)
