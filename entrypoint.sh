@@ -34,6 +34,8 @@ if [ -n "$CONFIG_VALUES" ]; then
     firebase functions:config:set $CONFIG_VALUES
 fi
 
+sh -c "ls -ltrha"
+sh -c "cat .env"
 sh -c "chmod -R 777 /github"
 sh -c "firebase $*"
 
