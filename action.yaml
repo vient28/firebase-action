@@ -12,4 +12,6 @@ outputs:
 
 runs:
   using: 'docker'
+  args:
+    - '-u root'
   image: 'docker://ctpeter/firebase-action:master'
