@@ -3,12 +3,12 @@ name: Build Docker Images
 on:
   push:
     branches:
-      - master
+      - update-workflow
     tags:
       - 'v*'
   pull_request:
     branches:
-      - 'master'
+      - 'update-workflow'
 
 jobs:
   build:
