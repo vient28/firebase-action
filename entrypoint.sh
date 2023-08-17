@@ -42,9 +42,11 @@ fi
 sh -c "ls -ltrha"
 sh -c "cat .env"
 sh -c "pwd"
-sh -c "chmod -R 777 /github/home/.config/" 
-sh -c "firebase $*"
-
+sh -c "chmod -R 777 /github/home/.config/"
+while IFS= read -r function; do
+    echo "Deploying function: $function"
+    sh -c "firebase $*"
+done < functions.txt
 # response=$(firebase $*)
 
 # if [ $? -eq 0 ]; then
