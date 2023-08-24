@@ -45,7 +45,7 @@ sh -c "pwd"
 sh -c "chmod -R 777 /github/home/.config/"
 while IFS= read -r function; do
     echo "Deploying function: $function"
-    sh -c "firebase $*"
+    sh -c "firebase deploy --only $function"
 done < functions.txt
 # response=$(firebase $*)
 
