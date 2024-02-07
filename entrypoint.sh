@@ -43,13 +43,14 @@ sh -c "ls -ltrha"
 sh -c "cat .env"
 sh -c "pwd"
 sh -c "chmod -R 777 /github/home/.config/" 
-expect -c "
-    spawn sh -c \"firebase $*\"
-    expect {
-        \"Would you like to proceed with deployment?\" { send \"Y\r\"; exp_continue }
-    }
-    interact
-"
+sh -c 'firebase $*' | while IFS= read -r line; do
+    echo "$line"
+    case "$line" in
+        *"With these options, your minimum bill"*)
+            echo "Y"
+            ;;
+    esac
+done
 # response=$(firebase $*)
 
 # if [ $? -eq 0 ]; then
