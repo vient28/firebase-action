@@ -39,6 +39,14 @@ if [ -n "$CONFIG_VALUES" ]; then
     firebase functions:config:set $CONFIG_VALUES
 fi
 
+expect -c "
+    spawn firebase $*
+    expect {
+        \"Would you like to proceed with deployment?\" { send \"Y\r\"; exp_continue }
+    }
+    interact
+"
+
 sh -c "ls -ltrha"
 sh -c "cat .env"
 sh -c "pwd"
