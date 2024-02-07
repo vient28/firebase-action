@@ -39,18 +39,15 @@ if [ -n "$CONFIG_VALUES" ]; then
     firebase functions:config:set $CONFIG_VALUES
 fi
 
-sh -c "ls -ltrha"
-sh -c "cat .env"
-sh -c "pwd"
+
 sh -c "chmod -R 777 /github/home/.config/" 
-sh -c 'firebase $*' | while IFS= read -r line; do
-    echo "$line"
-    case "$line" in
-        *"With these options, your minimum bill"*)
-            echo "Y"
-            ;;
-    esac
-done
+expect -c "
+    spawn firebase $*
+    expect {
+        \"With these options, your minimum bill\" { send \"Y\r\"; exp_continue }
+    }
+    interact
+"
 # response=$(firebase $*)
 
 # if [ $? -eq 0 ]; then
