@@ -43,8 +43,10 @@ fi
 sh -c "chmod -R 777 /github/home/.config/" 
 expect -c "
     spawn firebase $*
+    set timeout -1
     expect {
-        \"With these options, your minimum bill\" { send \"n\r\"; exp_continue }
+        \"With these options, your minimum bill\" { send \"Y\r\"; exp_continue }
+        eof { exit }
     }
     interact
 "
