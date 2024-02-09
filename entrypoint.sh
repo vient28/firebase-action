@@ -46,6 +46,7 @@ expect -c "
     set timeout -1
     expect {
         \"With these options, your minimum bill\" { send \"Y\r\"; exp_continue }
+        \"Would you like to proceed with deletion?\" { send \"N\r\"; exp_continue }
         eof { exit }
     }
     interact
