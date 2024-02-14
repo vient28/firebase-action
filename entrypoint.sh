@@ -51,6 +51,7 @@ expect -c "
     }
     interact
 "
+cat /tmp/output.json
 # response=$(firebase $*)
 
 # if [ $? -eq 0 ]; then
