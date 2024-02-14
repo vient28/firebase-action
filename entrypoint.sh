@@ -50,8 +50,10 @@ expect -c "
         eof { exit }
     }
     interact
+    exec sh -c 'cat /tmp/output.json'
 "
-sh -c "cat /tmp/output.json"
+sh -c "ls -ltrh"
+sh -c "pwd"
 # response=$(firebase $*)
 
 # if [ $? -eq 0 ]; then
